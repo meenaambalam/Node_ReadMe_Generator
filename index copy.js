@@ -17,7 +17,6 @@ let inquirer = require("inquirer");
 let fileLine;
 let filename = "README.md";
 let firstWrite = true;
-let licenseBadges;
 
 inquirer.prompt(
     [
@@ -82,9 +81,16 @@ inquirer.prompt(
         //     ,"contribution":"npm inquirer",
         //     "license":["MIT","ISC"]
         // } 
-      
-            for (let i = 0; i < data.license.length; i++) {
-                switch (data.license[i]) {
+
+        console.log("license length:" + data.license.length + " licenses: " + data.license[0]);
+
+        let licenseBadges = getbadges(data.license);
+
+        function getbadges(licenses) {
+            console.log ("get badge function called");
+            let final_license_markdown;
+            for (let i = 0; i < licenses.length; i++) {
+                switch (licenses[i]) {
                     case "MIT":
                         markdown_txt = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
                         break;
@@ -107,10 +113,10 @@ inquirer.prompt(
                         break;
                 }
                 console.log("mardown text:" + markdown_txt);
-                console.log("liceseBadge: " + licenseBadges + " End of Print");
-                licenseBadges = `${licenseBadges} \n ${markdown_txt} \n`;
+                final_license_markdown = `${final_license_markdown} \n ${markdown_txt} \n`;
+                return final_license_markdown;
             }
-
+        }
 
         console.log("badges: " + licenseBadges);
 
