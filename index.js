@@ -48,7 +48,12 @@ inquirer.prompt(
         {
             type: "input",
             name: "contribution",
-            message: "Contribution"
+            message: "How to Controbute?"
+        },
+        {
+            type: "input",
+            name: "tests",
+            message: "Tests:"
         },
         {
             type: "checkbox",
@@ -62,7 +67,12 @@ inquirer.prompt(
                 "Open Database License",
                 "PDDL"
             ]
-        }
+        },
+        {
+            type: "input",
+            name: "Questions",
+            message: "Questions:"
+        },
     ]).then(data=>{
 
         // data: {"title":"readme generator",
@@ -72,32 +82,45 @@ inquirer.prompt(
     //     ,"contribution":"npm inquirer",
     //     "license":["MIT","ISC"]
     // } 
-        outLine = `# ${data.title} \n \n` +
+        let titleLine = `# ${data.title} \n \n`;
 
+        let descLine = titleLine +
         `## Description \n` +
         "```\n" +  
         `${data.description} \n` +
-        "```\n" +
+        "```\n";
 
-        `## Installation \n` +
+        let installLine = descLine +
+        `## Installation Instruction\n` +
         "```\n"+
         `${data.installation} \n` +
-        "```\n" +
+        "```\n";
 
+        let usageLine = installLine + 
         `## Usage \n` +
         "```\n" +
         `${data.usage} \n` +
-        "```\n" +
+        "```\n";
 
-        `## Contribution \n` + 
+        let contributeLine = usageLine + 
+        `## How to Contribute \n` + 
         "```\n" +
         `${data.contribution} \n` +
-        "```\n" +
+        "```\n";
 
+        let licenseLine = contributeLine +
         `## License \n` + 
         "```\n" +
         `${data.license} \n` +
+        "```\n";
+
+        let testLine = licenseLine +      
+        `## Tests \n` + 
+        "```\n" +
+        `${data.tests} \n` +
         "```\n" ;
+
+        let outLine = testLine;
 
         fileLine = write(outLine);
         

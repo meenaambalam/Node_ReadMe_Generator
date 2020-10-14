@@ -1,21 +1,26 @@
-# ReadMe generator 
+# testing 
+ 
 ## Description 
 ```
-App dynamically creates README markdown file 
+Hello! this should help in generating my future project READMEs :-) 
 ```
-## Installation 
+## Installation Instruction
 ```
-inquirer 
+inquirer,npm 
 ```
 ## Usage 
 ```
-Not really sure what usually goes in this section 
+ 
 ```
-## Contribution 
+## How to Contribute 
 ```
-Not sure what goes in here. I am going to type a lot of words to see how long it can be. Wonder if any of these will be truncated. We will have to see. What would happen if I reach the end of the screen. It automatically wrapped without me having to hit enter. Ok, now I am going to hit enter. 
+If you are cloning the repository, please do not push to main. Make your own branch "git checkout -b branch-name" command. 
 ```
 ## License 
 ```
-MIT 
+MIT,IBM 
+```
+## Tests 
+```
+You can test the readme generation for any of your projects 
 ```
