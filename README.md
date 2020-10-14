@@ -1,45 +1,69 @@
-# gdfgd 
+
+
+
+
+
+
+# README Generator 
  
-undefined 
- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
- 
- [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
- 
- [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC) 
+[![License: IPL 1.0](https://img.shields.io/badge/License-IPL%201.0-blue.svg)](https://opensource.org/licenses/IPL-1.0) 
+[![License: ODbL](https://img.shields.io/badge/License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/) 
 ## Table of contents 
 
-        1. ![Description](#description)
+1. [Description](#description) 
 
-        2. ![Install Guide](#install)
+2. [Install Guide](#install) 
         
-        3. [Usage](#usage)
+3. [Usage](#usage) 
 
-        4. [Contribute](#contribute)
+4. [Contribute](#contribute) 
 
-        5. [license](#license)
+5. [license](#license) 
 
-        6. [Tests](#tests)
-## Description <a name="description"></a>
+6. [Tests](#tests) 
+
+        
+<div id="description"/>
+        
+## Description
 ```
-gdfgdf 
+This Application will generate a README markdown file with the user inputs provided thruogh the node command line
 ```
-## Installation Instruction <a name="install"></a>
+        
+<div id="install"/>
+        
+## Installation Instruction
 ```
-inquirer 
+inquirer
 ```
-## Usage <a name="usage"></a> 
+        
+<div id="usage"/>
+        
+## Usage
 ```
-gdfgd 
+Any application require a README file to help others understand how to use the applciation. This App will help prompt the user with various questions related to README creatin and will creating a readme file in the markdown format. 
 ```
-## How to Contribute <a name="contribute"></a> 
+        
+<div id="contribute"/>
+        
+## How to Contribute
 ```
-gdfgd 
+This version of the application has feature to add some licenses and some installation choises. This can be use to add additional readme features.
 ```
-## License <a name="license"></a> 
+        
+<div id="license"/>
+        
+## License
 ```
-MIT,GNU,ISC 
+MIT,GNU,ISC,IBM,ODbL
 ```
-## Tests <a name="tests"></a>
+        
+<div id="tests"/>
+        
+## Tests
 ```
-gdfgdf 
+Testing can be done through Node.JS command line and Visual Code has preview of Markdown files, which can help to display the format as it will be shown in the GITHUB or in other markdown editors.
 ```

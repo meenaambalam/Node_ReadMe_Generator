@@ -17,7 +17,16 @@ let inquirer = require("inquirer");
 let fileLine;
 let filename = "README.md";
 let firstWrite = true;
-let licenseBadges;
+let licenseBadges = "";
+
+let tableOfContent = 
+`## Table of contents \n
+1. [Description](#description) \n
+2. [Install Guide](#install) \n        
+3. [Usage](#usage) \n
+4. [Contribute](#contribute) \n
+5. [license](#license) \n
+6. [Tests](#tests) \n`;
 
 inquirer.prompt(
     [
@@ -83,123 +92,95 @@ inquirer.prompt(
         //     "license":["MIT","ISC"]
         // } 
       
-            for (let i = 0; i < data.license.length; i++) {
-                switch (data.license[i]) {
-                    case "MIT":
-                        markdown_txt = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
-                        break;
-                    case "GNU":
-                        markdown_txt = `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`;
-                        break;
-                    case "ISU":
-                        markdown_txt = `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`;
-                        break;
-                    case "IBM":
-                        markdown_txt = `[![License: IPL 1.0](https://img.shields.io/badge/License-IPL%201.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)`;
-                        break;
-                    case "ODbL":
-                        markdown_txt = `[![License: ODbL](https://img.shields.io/badge/License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/)`;
-                        break;
-                    case "ODbL":
-                        markdown_txt = `[![License: ODbL](https://img.shields.io/badge/License-PDDL-brightgreen.svg)](https://opendatacommons.org/licenses/pddl/)`;
-                        break;
-                    default:
-                        break;
-                }
+        for (let i = 0; i < data.license.length; i++) {
+            switch (data.license[i]) {
+                case "MIT":
+                    markdown_txt = `\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) \n`;
+                    break;
+                case "GNU":
+                    markdown_txt = `\n[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) \n`;
+                    break;
+                case "ISC":
+                    markdown_txt = `\n[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC) \n`;
+                    break;
+                case "IBM":
+                    markdown_txt = `\n[![License: IPL 1.0](https://img.shields.io/badge/License-IPL%201.0-blue.svg)](https://opensource.org/licenses/IPL-1.0) \n`;
+                    break;
+                case "ODbL":
+                    markdown_txt = `\n[![License: ODbL](https://img.shields.io/badge/License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/) \n`;
+                    break;
+                case "PDDL":
+                    markdown_txt = `\n[![License: ODbL](https://img.shields.io/badge/License-PDDL-brightgreen.svg)](https://opendatacommons.org/licenses/pddl/) \n`;
+                    break;
+                default:
+                    break;
+            }
                 console.log("mardown text:" + markdown_txt);
                 console.log("liceseBadge: " + licenseBadges + " End of Print");
-                licenseBadges = `${licenseBadges} \n ${markdown_txt} \n`;
-            }
+            licenseBadges = licenseBadges + markdown_txt;
+        }
 
 
         console.log("badges: " + licenseBadges);
-
-        let tableOfContent = `## Table of contents \n
-        1. ![Description](#description)\n
-        2. ![Install Guide](#install)\n        
-        3. [Usage](#usage)\n
-        4. [Contribute](#contribute)\n
-        5. [license](#license)\n
-        6. [Tests](#tests)\n`;
-
-
-
         let titleLine = `# ${data.title} \n \n`;
 
-        let toc = titleLine + licenseBadges + tableOfContent;
+        let license = titleLine + licenseBadges;
 
-        let descLine = toc +
-            `## Description <a name="description"></a>\n` +
-            "```\n" +
-            `${data.description} \n` +
-            "```\n";
+        let toc = license + tableOfContent;
 
-        let installLine = descLine +
-            `## Installation Instruction <a name="install"></a>\n` +
-            "```\n" +
-            `${data.installation} \n` +
-            "```\n";
+        let descLine = 
+        `\n${toc}
+        \n<div id="description"/>
+        \n## Description` +
+        "\n```" +
+        `\n${data.description}` +
+        "\n```";
 
-        let usageLine = installLine +
-            `## Usage <a name="usage"></a> \n` +
-            "```\n" +
-            `${data.usage} \n` +
-            "```\n";
+        let installLine = 
+        `\n${descLine}
+        \n<div id="install"/>
+        \n## Installation Instruction` +
+        "\n```" +
+        `\n${data.installation}` +
+        "\n```";
 
-        let contributeLine = usageLine +
-            `## How to Contribute <a name="contribute"></a> \n` +
-            "```\n" +
-            `${data.contribution} \n` +
-            "```\n";
+        let usageLine = 
+        `\n${installLine}
+        \n<div id="usage"/>
+        \n## Usage` +
+        "\n```" +
+        `\n${data.usage}` +
+        "\n```";
 
-        let licenseLine = contributeLine +
-            `## License <a name="license"></a> \n` +
-            "```\n" +
-            `${data.license} \n` +
-            "```\n";
+        let contributeLine = 
+        `\n${usageLine}
+        \n<div id="contribute"/>
+        \n## How to Contribute` +
+        "\n```" +
+        `\n${data.contribution}` +
+        "\n```";
+
+        let licenseLine = 
+        `\n${contributeLine}
+        \n<div id="license"/>
+        \n## License` +
+        "\n```" +
+        `\n${data.license}` +
+        "\n```";
 
 
-        let testLine = licenseLine +
-            `## Tests <a name="tests"></a>\n` +
-            "```\n" +
-            `${data.tests} \n` +
-            "```\n";
+        let testLine = 
+        `\n${licenseLine}
+        \n<div id="tests"/>
+        \n## Tests` +
+        "\n```" +
+        `\n${data.tests}` +
+        "\n```";
 
         let outLine = testLine;
 
         fileLine = write(outLine);
-
-        getbadges(data.license);
-
-        function getbadges(licenses) {
-            for (let i = 0; i < licenses.length; i++) {
-                switch (licenses[i]) {
-                    case "MIT":
-                        markdown_txt = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
-                        break;
-
-                    default:
-                        break;
-                }
-
-            }
-        }
-
-        // fileLine = write(`# ${data.title}\n`);
-
-        // fileLine = write(`## Description \n`);
-        // fileLine = write("```\n");
-        // fileLine = write(`${data.description} \n`);
-        // fileLine = write("```\n");
-
         console.log("README file had been successfully generated!");
-
-        // fs.writeFile(filename,JSON.stringify(data, null, '\n'), function(err) {
-        //     if (err) {
-        //         return console.log(err);
-        //     }
-        //     console.log("Success!");
-        // });
 
         function write(fileLine) {
 
@@ -225,8 +206,5 @@ inquirer.prompt(
 
     });
 
-
-
-//title, description,  installation, usage, contribution
 
 
