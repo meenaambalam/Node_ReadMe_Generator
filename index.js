@@ -115,7 +115,7 @@ inquirer.prompt(
             licenseBadges = licenseBadges + markdown_txt;
         }
 
-        let titleLine = `# ${data.title} \n \n`;
+        let titleLine = `\n# ${data.title}`;
 
         let license = titleLine + licenseBadges;
 
