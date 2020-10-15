@@ -1,39 +1,34 @@
 console.log("Hello! Welcome to ReadME Markdown generator \n");
 const welcomeMsg = ` This utility will walk you through creating a README.md (markdown) file.
 It only covers the most common items, and will save the information as you provide.
-
 This utility or application requires "inquirer" npm module. 
-
 Use 'npm install <pkg>' to install a package and save it as a dependency in the package.json file.
-
-Press ^C at any time to quit.
+Press ^c at any time to quit.
 `
 
 console.log(welcomeMsg);
 
 let fs = require("fs");
 let inquirer = require("inquirer");
-
-let fileLine;
 let filename = "README.md";
-let firstWrite = true;
 let licenseBadges = "";
 
 let tableOfContent = 
-`## Table of contents \n
-1. [Description](#description) \n
-2. [Install Guide](#install) \n        
-3. [Usage](#usage) \n
-4. [Contribute](#contribute) \n
-5. [license](#license) \n
-6. [Tests](#tests) \n`;
+`\n## Table of contents
+\n1. [Description](#description)
+\n2. [Install Guide](#install)
+\n3. [Usage](#usage)
+\n4. [Contribute](#contribute)
+\n5. [license](#license)
+\n6. [Tests](#tests)
+\n7. [Questions](#questions)`;
 
 inquirer.prompt(
     [
         {
             type: "input",
             name: "title",
-            message: "Please enter the title of the Project:"
+            message: "Title of the Project:"
         },
         {
             type: "input",
@@ -41,13 +36,9 @@ inquirer.prompt(
             message: "Description: "
         },
         {
-            type: "checkbox",
+            type: "input",
             name: "installation",
-            message: "Please enter any Installation dependencies: ",
-            choices: [
-                "inquirer",
-                "moment"
-            ]
+            message: "Any Installation dependencies:",
         },
         {
             type: "input",
@@ -67,7 +58,7 @@ inquirer.prompt(
         {
             type: "checkbox",
             name: "license",
-            message: "Choose a license from the below options:",
+            message: "Any license you want included from the below options:",
             choices: [
                 "MIT",
                 "GNU",
@@ -79,9 +70,14 @@ inquirer.prompt(
         },
         {
             type: "input",
-            name: "Questions",
-            message: "Questions:"
+            name: "username",
+            message: "What's your Github username:"
         },
+        {
+            type: "input",
+            name: "email",
+            message: "Please provide your email address:"
+        }
     ]).then(data => {
 
         // data: {"title":"readme generator",
@@ -115,13 +111,10 @@ inquirer.prompt(
                 default:
                     break;
             }
-                console.log("mardown text:" + markdown_txt);
-                console.log("liceseBadge: " + licenseBadges + " End of Print");
+
             licenseBadges = licenseBadges + markdown_txt;
         }
 
-
-        console.log("badges: " + licenseBadges);
         let titleLine = `# ${data.title} \n \n`;
 
         let license = titleLine + licenseBadges;
@@ -177,31 +170,48 @@ inquirer.prompt(
         `\n${data.tests}` +
         "\n```";
 
-        let outLine = testLine;
+        let questionLine = 
+        `\n${testLine}
+        \n<div id="questions"/>
+        \n## Questions` +
+        // "\n```" +
+        `\nGitHub Repository: [[https://github.com/${data.username}/${data.username}.github.io]](https://github.com/${data.username}/${data.username}.github.io)` +
+        `\n` +
+        `\nPlease contact ${data.username} at [${data.email}](mailto:${data.email}?subject=Github) in case of any questions with the application or instruction.`;
+        // "\n```";
 
-        fileLine = write(outLine);
-        console.log("README file had been successfully generated!");
+        let outLine = questionLine;
 
-        function write(fileLine) {
-
-            if (firstWrite) {
-                fs.writeFile(filename, fileLine, function (err) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                    // console.log("Success!");
-                });
-                firstWrite = false;
-            } else {
-                fs.appendFile(filename, fileLine, function (err) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                    // console.log("Success!");
-                });
+        fs.writeFile(filename, outLine, function (err) {
+            if (err) {
+                return console.log(err);
             }
+            console.log("README file had been successfully generated!");
+        });
 
-        }
+        // fileLine = write(outLine);
+        // console.log("README file had been successfully generated!");
+
+        // function write(fileLine) {
+
+        //     if (firstWrite) {
+        //         fs.writeFile(filename, fileLine, function (err) {
+        //             if (err) {
+        //                 return console.log(err);
+        //             }
+        //             // console.log("Success!");
+        //         });
+        //         firstWrite = false;
+        //     } else {
+        //         fs.appendFile(filename, fileLine, function (err) {
+        //             if (err) {
+        //                 return console.log(err);
+        //             }
+        //             // console.log("Success!");
+        //         });
+        //     }
+
+        // }
 
 
     });

@@ -4,66 +4,73 @@
 
 
 
-# README Generator 
+
+# jbjdvbsjbv 
  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC) 
-[![License: IPL 1.0](https://img.shields.io/badge/License-IPL%201.0-blue.svg)](https://opensource.org/licenses/IPL-1.0) 
-[![License: ODbL](https://img.shields.io/badge/License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/) 
-## Table of contents 
 
-1. [Description](#description) 
+[![License: ODbL](https://img.shields.io/badge/License-PDDL-brightgreen.svg)](https://opendatacommons.org/licenses/pddl/) 
 
-2. [Install Guide](#install) 
-        
-3. [Usage](#usage) 
+## Table of contents
 
-4. [Contribute](#contribute) 
+1. [Description](#description)
 
-5. [license](#license) 
+2. [Install Guide](#install)
 
-6. [Tests](#tests) 
+3. [Usage](#usage)
 
+4. [Contribute](#contribute)
+
+5. [license](#license)
+
+6. [Tests](#tests)
+
+7. [Questions](#questions)
         
 <div id="description"/>
         
 ## Description
 ```
-This Application will generate a README markdown file with the user inputs provided thruogh the node command line
+jbvskbdvskj
 ```
         
 <div id="install"/>
         
 ## Installation Instruction
 ```
-inquirer
+kbdvkjsbdvkjs
 ```
         
 <div id="usage"/>
         
 ## Usage
 ```
-Any application require a README file to help others understand how to use the applciation. This App will help prompt the user with various questions related to README creatin and will creating a readme file in the markdown format. 
+ksjbvksbdv
 ```
         
 <div id="contribute"/>
         
 ## How to Contribute
 ```
-This version of the application has feature to add some licenses and some installation choises. This can be use to add additional readme features.
+kvbksvbskfv
 ```
         
 <div id="license"/>
         
 ## License
 ```
-MIT,GNU,ISC,IBM,ODbL
+PDDL
 ```
         
 <div id="tests"/>
         
 ## Tests
 ```
-Testing can be done through Node.JS command line and Visual Code has preview of Markdown files, which can help to display the format as it will be shown in the GITHUB or in other markdown editors.
+kvbfkvbkdfs
 ```
+        
+<div id="questions"/>
+        
+## Questions
+GitHub Repository: [[https://github.com/meenaambalam/meenaambalam.github.io]](https://github.com/meenaambalam/meenaambalam.github.io)
+
+Please contact meenaambalam at [meena.a.ambalam@gmail.com](mailto:meena.a.ambalam@gmail.com?subject=Github) in case of any questions with the application or instruction.
