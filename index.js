@@ -1,3 +1,4 @@
+//just some greetings when the App starts to communicate some information
 console.log("Hello! Welcome to ReadME Markdown generator \n");
 const welcomeMsg = ` This utility will walk you through creating a README.md (markdown) file.
 It only covers the most common items, and will save the information as you provide.
@@ -5,14 +6,15 @@ This utility or application requires "inquirer" npm module.
 Use 'npm install <pkg>' to install a package and save it as a dependency in the package.json file.
 Press ^c at any time to quit.
 `
-
+//displaying the Welcome Message
 console.log(welcomeMsg);
 
+//Initialize Variables
 let fs = require("fs");
 let inquirer = require("inquirer");
 let filename = "README.md";
 let licenseBadges = "";
-
+//Initializing the structure of table of contents for the README
 let tableOfContent = 
 `\n## Table of contents
 \n1. [Description](#description)
@@ -22,7 +24,7 @@ let tableOfContent =
 \n5. [license](#license)
 \n6. [Tests](#tests)
 \n7. [Questions](#questions)`;
-
+//Promt that will present various input questions to users and will save their response for further processing
 inquirer.prompt(
     [
         {
@@ -80,14 +82,8 @@ inquirer.prompt(
         }
     ]).then(data => {
 
-        // data: {"title":"readme generator",
-        //     "description":"app to generate readme from the command line run time node application",
-        //     "installation":["inquirer"],
-        //     "usage":""
-        //     ,"contribution":"npm inquirer",
-        //     "license":["MIT","ISC"]
-        // } 
-      
+
+        //Information to build badges from licenses based on user input
         for (let i = 0; i < data.license.length; i++) {
             switch (data.license[i]) {
                 case "MIT":
@@ -114,13 +110,16 @@ inquirer.prompt(
 
             licenseBadges = licenseBadges + markdown_txt;
         }
-
+        // Adding various sections of README in a particular order
+        // Concatenate each section of README before writing to the ReADME file
+        //Add Title
         let titleLine = `\n# ${data.title}`;
-
+        //Add License Badge
         let license = titleLine + licenseBadges;
-
+        //Add Table of Content
         let toc = license + tableOfContent;
-
+        
+        //Add Description and create link from TOC item to its respective section
         let descLine = 
         `\n${toc}
         \n<div id="description"/>
@@ -128,7 +127,8 @@ inquirer.prompt(
         "\n```" +
         `\n${data.description}` +
         "\n```";
-
+        
+        //Add Install section
         let installLine = 
         `\n${descLine}
         \n<div id="install"/>
@@ -136,7 +136,8 @@ inquirer.prompt(
         "\n```" +
         `\n${data.installation}` +
         "\n```";
-
+        
+        //Add Usage section
         let usageLine = 
         `\n${installLine}
         \n<div id="usage"/>
@@ -145,6 +146,7 @@ inquirer.prompt(
         `\n${data.usage}` +
         "\n```";
 
+        //Add Contribute section
         let contributeLine = 
         `\n${usageLine}
         \n<div id="contribute"/>
@@ -153,6 +155,7 @@ inquirer.prompt(
         `\n${data.contribution}` +
         "\n```";
 
+        //Add License
         let licenseLine = 
         `\n${contributeLine}
         \n<div id="license"/>
@@ -161,7 +164,7 @@ inquirer.prompt(
         `\n${data.license}` +
         "\n```";
 
-
+        //Add test section
         let testLine = 
         `\n${licenseLine}
         \n<div id="tests"/>
@@ -170,6 +173,7 @@ inquirer.prompt(
         `\n${data.tests}` +
         "\n```";
 
+        //Add question section with github URL and contact email address
         let questionLine = 
         `\n${testLine}
         \n<div id="questions"/>
@@ -182,37 +186,13 @@ inquirer.prompt(
 
         let outLine = questionLine;
 
+        //Writing to README file
         fs.writeFile(filename, outLine, function (err) {
             if (err) {
                 return console.log(err);
             }
             console.log("README file had been successfully generated!");
         });
-
-        // fileLine = write(outLine);
-        // console.log("README file had been successfully generated!");
-
-        // function write(fileLine) {
-
-        //     if (firstWrite) {
-        //         fs.writeFile(filename, fileLine, function (err) {
-        //             if (err) {
-        //                 return console.log(err);
-        //             }
-        //             // console.log("Success!");
-        //         });
-        //         firstWrite = false;
-        //     } else {
-        //         fs.appendFile(filename, fileLine, function (err) {
-        //             if (err) {
-        //                 return console.log(err);
-        //             }
-        //             // console.log("Success!");
-        //         });
-        //     }
-
-        // }
-
 
     });
 
